@@ -1,6 +1,5 @@
-<h3>You just added a post with an Ajax Request!</h3>
-<h4>Our updated list of Posts is now...</h4>
+<h6>Our updated list of posts is now...</h6>
 
 <li th:each="post : ${postsModel}">
-   <a th:href="@{/post(id=${post.id})}" th:text="${post.content}"></a>
+   <a th:href="@{/posts/}" th:text="${post.content}"></a>
  </li>
