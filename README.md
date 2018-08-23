@@ -1,6 +1,6 @@
 ## Spring Security Demo
 
-This project uses Spring **VERSION 1.5** and Spring Security to control access levels for both an admin user and a guest user. 
+This project uses Spring **VERSION 1.5** and Spring Security to control access levels for both an admin user and a guest user. It creates one simple JPA entity...`Post` that takes on a field called `content`.  
 
 ### Dependencies Used
 	- compile('org.springframework.boot:spring-boot-starter-security')
