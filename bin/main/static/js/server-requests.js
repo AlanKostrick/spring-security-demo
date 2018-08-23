@@ -1,6 +1,6 @@
 const postAddButton = document.querySelector('.add-post button');
 const postAddInput = document.querySelector('.add-post input');
-const postsList = document.querySelector('.posts-list p');
+const postsList = document.querySelector('.posts-list ul');
 
 const xhr = new XMLHttpRequest()
 xhr.onreadystatechange = function(){

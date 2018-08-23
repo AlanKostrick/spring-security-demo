@@ -19,12 +19,20 @@ public class SiteController {
 		return "index";
 	}
 
+	@RequestMapping("/posts")
+	public String seePosts(Model model) {
+		model.addAttribute("postsModel", postRepo.findAll());
+		return "layouts/posts";
+	}
+	
+	
 	@RequestMapping("/admin/posts")
 	public String addPost(Model model) {
 		model.addAttribute("postsModel", postRepo.findAll());
 		return "layouts/post";
 	}
-
+	
+	
 	@RequestMapping(path = "/admin/posts/{content}", method = RequestMethod.POST)
 	public String AddTag(@PathVariable String content, Model model) {
 		Post postToAdd = new Post(content);

@@ -10,50 +10,66 @@
 	<title>Security Demo</title>
 	
 	<link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-		
-	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />	
-	<link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>   
 	
-	<!--[if lt IE 9]>
-	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
 </head>
+
+
 <body>
-
-	<div class="container">
-  		 
-		<nav class="navbar navbar-default">
-		    <div class="container-fluid">
-		        <div class="navbar-header">
-		            <a class="navbar-brand" href="/">AL Can Code IT</a>
-		        </div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				    <ul class="nav navbar-nav">
-				        <li class="active"><a href="/">Home</a></li>
-				        <li class=""><a href="/posts/">Posts</a></li>
-				    </ul>
-				    <div class="navbar-text navbar-right">
-			            Welcome <span sec:authentication="name">Guest</span>
-				    	<form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">
-				    		| <a href="javascript:{}" onclick="document.getElementById('frmlogout').submit(); return false;">Logout</a>
-				    	</form>
-				    </div>
-				</div>
+                                                                                 
+<div class="grid-container">
+  
+  <div class="grid-item header">
+    <h2 id="logo"> Spring Security Demo </h2>
+    <nav> 
+      <ul>
+         <li class="active"><a href="/">Home</a></li>
+		 <li class=""><a href="/posts/">Posts</a></li>
+      	 <li class="welcome">
+			    Welcome: <span sec:authentication="name"> Guest</span>
+				 <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">
+				    <a href="javascript:{}" onclick="document.getElementById('frmlogout').submit(); return false;">Logout</a>
+				 </form>
+	 	 </li>
+	 	 <li sec:authorize="hasRole('ROLE_ADMIN')">
+  				<a href="/admin/posts/">Add Post</a>
+		</li>
+      </ul>
+     
+    </nav>
+  </div>
+  
+  <div class="grid-item form">
+    	<form name="f" th:action="@{/login}" method="post" class="form-signin">
+		    <h2 class="signIn">Please sign in</h2>
+            <div th:if="${param.error}" class="alert">    
+                Invalid username and password.
+            </div>
+            <div th:if="${param.logout}" class="alert"> 
+                You have been logged out.
+            </div>		    
+		    <label for="username" class="sr-only">Username</label>
+		    <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="true" />
+		    <label for="password" class="sr-only">Password</label>
+		    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="true" />
+		    <div class="checkbox">
+		        <label class="remember">
+		            <input id="remember-me" name="remember-me" type="checkbox" /> Remember me
+		        </label>
 		    </div>
-		</nav>
-		
-		<div layout:fragment="content">
-		</div>
-		
-		<footer>
-			<p>Copyright acci 2018</p>
-		</footer>
-	
-	</div>
+		    <button class="submit" type="submit">Sign in</button>
+		</form>
+  </div>
+  
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
+  <div class="grid-item footer">
+  	<p>&copy;wcci 2018</p>
+  </div> 
+  
+   
+</div>
+
 </body>
 </html>
+
