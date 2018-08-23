@@ -14,7 +14,10 @@ This project uses Spring **VERSION 1.5** and Spring Security to control access l
 	- testCompile('org.springframework.security:spring-security-test')
   
   ### How to run this app
-  Go to `localhost:8080/` and you will be brought to a login page. If you login as username/password `admin` / `admin` you will have access
-  to be able to add a post. If you login as `guest` / `password` you will be able to view the posts but not create one. 
+  Go to `localhost:8080/` and you will be brought to a login page. If you login as username/password `admin` / `admin` you will have     access to be able to add a post. If you login as `guest` / `password` you will be able to view the posts but not create one. 
   
   
+#### ToDOs
+- figure out how to integrate in Spring 2.0
+- figure out how to test drive spring security
+- figure out how to dynamically add users vs. hardcoding their usernames/passwords/roles in `SecurityConfig`
